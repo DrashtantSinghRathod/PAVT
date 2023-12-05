@@ -1,0 +1,144 @@
+﻿Program Analysis, Verification and Testing
+CS639
+Assignment#3
+Program Synthesis using Symbolic Execution
+
+Problem Statement:
+We are given two programs P1 and P2, we are to find constant assignments to variables in P1 (given using -c flag) such that it becomes semantically equivalent to P2.
+
+
+Implementation:
+Symbolic Execution is executed on both the complete and incomplete programs and their testdata.json files are created. Symbolic Encodings of both the json files are compare, if both are equal, then flag is set and all the symbolic encodings are added to the solver. Then the solver is called through the solver object.
+
+#limitations:
+done the bonus part i.e. with the constraint but the output is not correct
+there should not be any constant in if condition
+
+
+TestCases:
+
+cd testCases
+
+#testCase1:
+P1:
+:y = :x
+if :x <= 42 [
+   :y = :y + :c1
+]
+:y = :y + :c2
+
+P2:
+:y = :x
+if :x <= 42 [
+   :y = :y + 40
+] else [
+   :y = :y + 22
+]
+
+
+
+#testCase2:
+
+P1:
+:y = :x
+if :x >= :y [
+   :y = :y + :c1
+   :x = :x + :c2
+]
+:y = :y + :c2
+:x =:x + :c1
+if :x == :y [
+   :y = :y + :c2
+   :x = :x + :c1 ]
+:y = :y + :c1
+:x = :x + :c2
+
+P2:
+:y = :x
+if :x >= :y [
+   :y = :y + 100
+]
+:y = :y + 80
+if :x == :y [
+   :y = :y + 60
+]
+:y = :y + 40
+
+
+
+
+
+#testCase3:
+
+P1:
+
+if(:x < :y)
+   [
+      :y = :y + :c1
+   :x =:x - :c2
+   ]
+else
+   [
+
+      :x = :x + :c1
+   :y = :y - :c1]
+
+P2:
+if(:x < :y)[
+   :y = :y + 88
+   :x =:x - 66
+   ]
+else[
+   :x = :x + 66   
+   :y = :y - 88]
+
+
+  
+  
+
+
+
+#testCase4:
+P1:
+:y=0
+if(:y > :x)[
+   forward :x
+   :y = :y+:c1
+   right :y
+
+]else[
+   forward :x
+   :y = :y+:c2
+   left :y
+]
+
+P2:
+:y = 0
+if(:y > :x)[
+   :y = :y + 90
+   forward :x
+   right :y
+]else[
+   :y =:y +90
+   forward :x
+   left :y
+]
+
+#testCase5:
+P1:
+:y=180
+if(:y > :x)[
+   :y = :y + :c1]
+else[
+   :y = :y + :c1
+]
+
+P2:
+:y=180
+if(:y > :x)[
+   :y = :y + 66]
+else[
+   :y = :y + 55
+]
+
+
