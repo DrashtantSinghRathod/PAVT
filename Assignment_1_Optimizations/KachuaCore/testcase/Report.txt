@@ -1,0 +1,105 @@
+﻿Program ,Analysis,Verification and Testing
+CS-639
+Dept. Of Computer Sc. And Eng.
+
+Assignment 1:kachua movement optimization
+
+Report :
+
+Objective: Optimizing an IR by  using the Control Flow Analysis:
+
+In this program all the files are provided we only have to update :
+          initialize,
+          transfer function ,
+          meet,
+          analyzeUsingDFA
+
+My changes are done in only :
+	transfer function ,
+          meet,
+          analyzeUsingDFA
+                           
+We have to write 3 things for our program :
+	1) Limitations :{shows the boundary on the inputs}
+	2)Assumptions:{optimizing the IR by having some assumptions regarding the                
+				inputs}
+	3)Implemetation:{how we implemeted the optimization}
+
+Limitations :
+
+The input program must  only contain the MoveCommand(forward,backward) and PenCommand
+else  the optimized IR may give wrong results.
+And there should not be any MoveCommand after PenCommand penup if that  penup is not followed by PenCommand pendown
+
+
+Assumptions :
+ 
+It is assumed that the input program contains only PenCommand and MoveCommand(forward,backward)
+
+Implementation :
+We had made a code for "kachua code optimization"
+for which we have a proper code implemented from initial and 
+we only have to implement 
+                  1. Transfer function 
+                  2. Meet Function
+                  3. and Done optimization in AnalyzeusingDFA function
+
+we had done optimization in a way,
+                           that whenever there is a penup in IR from that 
+to next pendown we optimizr all move commands
+Used class function are :
+                .status :{shows status of pen command}
+                .expr :{shows value given to movestatement}
+                .direction :{shows the direction of move command}
+                .instrlist[0][0] :{shows the whole command in Basic Block}
+                .irID :{shows the IrId of IR }
+
+initialize: Define the lattice by initializing the
+lattice values and the meet operator.
+
+transferFunction: With the help of current INs of basic block,
+ calculates the Outs of the Basic Block.
+
+meet: Meet operation
+      penup v penup  --> penup
+      pendown v pendown  --> pendown
+      penup v  pendown --> pendown
+ i.e. 
+                           pendown
+
+
+
+
+                             penup     
+
+After defining the above functions, the code for 
+optimization is written in analyzeUsingDFA function.
+
+Installations:
+pip install numpy
+pip install z3
+pip install networkx
+sudo apt-get install graphviz graphviz-dev
+pip install graph viz
+
+
+
+Running the program to Optimize IR:
+In KachuaCore-
+
+1) Optimize the program testcase1.tl and generate an optimized IR (in binary form) called "optimized.kw".
+./kachua.py -dfa testcase/testcase1.tl
+2) Load the optimized IR (in binary form) and run it.
+./kachua.py -b -r ./optimized.kw
+
+3)Kachua can be run on the original program as well:
+./kachua.py -r example/test.tl
+
+How the IROptimization works:
+whenever in the generated IR the penup comes then till pendown appears we can optimize the move commands.
+How to optimize move commands:
+a)  loop in the range penup to pendown
+b)  Store the value of that move command in a variable x and remove that command
+c)  when the pendown appears add the forward move command with  value x in IR
+            
+

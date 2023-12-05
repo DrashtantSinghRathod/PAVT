@@ -1,0 +1,85 @@
+﻿Testcase 1 : = Optimized IR ==
+========== IR ==========
+
+0 backward -10  [ 1 ]
+1 pendown  [ 1 ]
+2 penup  [ 1 ]
+3 forward 0  [ 1 ]
+4 pendown  [ 1 ]
+5 penup  [ 1 ]
+6 NOP  [ 1 ]
+7 NOP  [ 1 ]
+8 forward -17  [ 1 ]
+9 pendown  [ 1 ]
+10 penup  [ 1 ]
+11 NOP  [ 1 ]
+12 NOP  [ 1 ]
+13 NOP  [ 1 ]
+14 forward -29  [ 1 ]
+15 pendown  [ 1 ]
+16 backward 20  [ 1 ]
+17 penup  [ 1 ]
+18 NOP  [ 1 ]
+19 NOP  [ 1 ]
+20 forward 48  [ 1 ]
+21 pendown  [ 1 ]
+22 penup  [ 1 ]
+
+
+Testcase 2 := Optimized IR ==
+========== IR ==========
+0 pendown  [ 1 ]
+1 forward 10  [ 1 ]
+2 backward -49  [ 1 ]
+3 pendown  [ 1 ]
+4 penup  [ 1 ]
+5 NOP  [ 1 ]
+6 NOP  [ 1 ]
+7 NOP  [ 1 ]
+8 forward -29  [ 1 ]
+9 pendown  [ 1 ]
+10 backward 20  [ 1 ]
+11 penup  [ 1 ]
+12 NOP  [ 1 ]
+13 NOP  [ 1 ]
+14 forward 48  [ 1 ]
+15 pendown  [ 1 ]
+
+Testcase 3 := Optimized IR ==
+========== IR ==========
+
+0 forward 10  [ 1 ]
+1 backward -29  [ 1 ]
+2 penup  [ 1 ]
+3 NOP  [ 1 ]
+4 NOP  [ 1 ]
+5 NOP  [ 1 ]
+6 NOP  [ 1 ]
+7 forward -68  [ 1 ]
+8 pendown  [ 1 ]
+9 forward 10  [ 1 ]
+10 backward -29  [ 1 ]
+11 forward 17  [ 1 ]
+
+Testcase 4  : = Optimized IR ==
+========== IR ==========
+
+0 penup  [ 1 ]
+1 NOP  [ 1 ]
+2 NOP  [ 1 ]
+3 NOP  [ 1 ]
+4 NOP  [ 1 ]
+5 forward -68  [ 1 ]
+6 pendown  [ 1 ]
+7 penup  [ 1 ]
+
+Testcase 5 : = Optimized IR ==
+========== IR ==========
+
+0 penup  [ 1 ]
+1 NOP  [ 1 ]
+2 NOP  [ 1 ]
+3 NOP  [ 1 ]
+4 forward -20  [ 1 ]
+5 pendown  [ 1 ]
+
